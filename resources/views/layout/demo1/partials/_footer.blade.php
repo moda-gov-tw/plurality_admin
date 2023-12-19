@@ -5,7 +5,7 @@
 		<!--begin::Copyright-->
 		<div class="text-dark order-2 order-md-1">
 			<span class="text-muted fw-semibold me-1">{{ date('Y') }}&copy;</span>
-			<a href="/" class="text-gray-800 text-hover-primary">Plurality</a>
+			<a href="/" class="text-gray-800 text-hover-primary">Plurality 管理後台</a>
 		</div>
 		<!--end::Copyright-->
 	</div>
