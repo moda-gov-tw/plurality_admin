@@ -39,8 +39,8 @@ module.exports = [
     'resources/assets/core/js/vendors/plugins/select2.init.js',
 
     // FormValidation - Best premium validation library for JavaScript. Zero dependencies. Learn more: https://formvalidation.io/
-    'resources/assets/core/plugins/formvalidation/dist/js/FormValidation.full.min.js',
-    'resources/assets/core/plugins/formvalidation/dist/js/plugins/Bootstrap5.min.js',
+    // 'resources/assets/core/plugins/formvalidation/dist/js/FormValidation.full.min.js',
+    // 'resources/assets/core/plugins/formvalidation/dist/js/plugins/Bootstrap5.min.js',
 
     // Bootstrap Maxlength - This plugin integrates by default with Twitter bootstrap using badges to display the maximum length of the field where the user is inserting text: https://github.com/mimo84/bootstrap-maxlength
     'node_modules/bootstrap-maxlength/src/bootstrap-maxlength.js',
