@@ -3532,7 +3532,7 @@ var KTWidgets = function () {
         
         if (toggle) {
             toggle.addEventListener('click', function() {
-                var goToDataUrl = this.getAttribute('data-kt-url');
+                var goToDataUrl = $(this).attr("data-kt-url");
                 window.location.href = goToDataUrl;
             });
         }
