@@ -444,12 +444,14 @@ var KTUtil = function() {
                     }
 
                     // based on https://javascriptweblog.wordpress.com/2011/08/08/fixing-the-javascript-typeof-operator/
-                    if ( Object.prototype.toString.call(obj[key]) === '[object Object]' ) {
+                    if ( Object.prototype.toString.call(obj[key]) === '[object Object]' && out.hasOwnProperty(key)) {
                         out[key] = KTUtil.deepExtend(out[key], obj[key]);
                         continue;
                     }
-
-                    out[key] = obj[key];
+                    else{
+                        out[key] = obj[key];    
+                    }
+                    
                 }
             }
 

@@ -3532,7 +3532,8 @@ var KTWidgets = function () {
         
         if (toggle) {
             toggle.addEventListener('click', function() {
-                window.location.href = this.getAttribute('data-kt-url');
+                var goToDataUrl = this.getAttribute('data-kt-url');
+                window.location.href = goToDataUrl;
             });
         }
     }
