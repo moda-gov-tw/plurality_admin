@@ -19,5 +19,6 @@ return [
     'login' => '登入',
     'sign-out' => '登出',
     'please_wait' => '請稍侯...',
+    'password_failed' => '密碼不正確',
 
 ];

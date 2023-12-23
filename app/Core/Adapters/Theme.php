@@ -244,7 +244,7 @@ class Theme extends \App\Core\Theme
         if (is_callable($demoConfig) && !is_string($demoConfig)) {
             $demoConfig = $demoConfig();
         }
-
+        
         return $demoConfig;
     }
 

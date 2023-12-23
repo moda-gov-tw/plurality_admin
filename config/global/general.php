@@ -4,6 +4,13 @@ return array(
     // Set this option false to remove demo in the assets path
     'use_demo' => true,
 
+    'permissions'   =>  array(
+        'user',
+        'role',
+        'news',
+        'exhibition'
+    ),
+
     // Product
     'product'  => array(
         'name'        => 'Plurality Backend',

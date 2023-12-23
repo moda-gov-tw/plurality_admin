@@ -1,0 +1,1 @@
+{{ (isset($user->getRoleNames()[0])?trans('views_table.'.$user->getRoleNames()[0]):trans('views_table.not_assigned_role') ) }}

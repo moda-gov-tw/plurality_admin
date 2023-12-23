@@ -103,6 +103,49 @@ return array(
             ),
         ),
     ),
+
+    //用戶管理
+    'user-management' => array(
+
+        //後台使用者列表
+        'admin' => array(
+            'title'  => 'admin',
+            'assets' => array(
+                'custom' => array(
+                    'js' => array(
+                        'js/custom/user-management/admin/admin-table.js',
+                        'js/custom/user-management/admin/change-user-role.js',
+                        'js/custom/user-management/admin/delete-user.js',
+                    ),
+                ),
+                'vendors' => array('datatables'),
+            ),
+        ),
+        //後台使用者列表
+        'new' => array(
+            'title'  => 'create-user',
+            'assets' => array(
+                'custom' => array(
+                    'js' => array(
+                        'js/custom/user-management/admin/submit-form.js',
+                    ),
+                ),
+                'vendors' => array('datatables'),
+            ),
+        ),
+    ),
+    'account' => array(
+        'settings' => array(
+            'title'       => 'account-settings',
+            'assets'      => array(
+                'custom' => array(
+                    'js' => array(
+                        'js/custom/account/settings/change-password.js',
+                    ),
+                ),
+            ),
+        ),
+    ),
     
     'login'           => array(
         'title'  => 'Login',
@@ -197,32 +240,7 @@ return array(
         ),
     ),
 
-    'account' => array(
-        'overview' => array(
-            'title'  => 'Account Overview',
-            'view'   => 'account/overview/overview',
-            'assets' => array(
-                'custom' => array(
-                    'js' => array(
-                        'js/custom/widgets.js',
-                    ),
-                ),
-            ),
-        ),
-
-        'settings' => array(
-            'title'  => 'Account Settings',
-            'assets' => array(
-                'custom' => array(
-                    'js' => array(
-                        'js/custom/account/settings/profile-details.js',
-                        'js/custom/account/settings/signin-methods.js',
-                        'js/custom/modals/two-factor-authentication.js',
-                    ),
-                ),
-            ),
-        ),
-    ),
+   
 
     'users'         => array(
         'title' => 'User List',

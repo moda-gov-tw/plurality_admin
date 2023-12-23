@@ -77,4 +77,6 @@ Route::get('/auth/redirect/{provider}', [SocialiteLoginController::class, 'redir
 
 require __DIR__.'/auth.php';
 require __DIR__.'/content-management.php';
+require __DIR__.'/user-management.php';
+require __DIR__.'/account.php';
 require __DIR__.'/api.php';
