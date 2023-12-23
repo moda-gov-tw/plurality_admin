@@ -7715,7 +7715,7 @@
     }, {
       key: "parseElement",
       value: function parseElement(e) {
-        var _t11 = new RegExp("^".concat(this.opts.prefix, "([a-z0-9-]+)(___)*([a-z0-9-]+)*$"));
+        var _t11 = new RegExp("^".concat(this.opts.prefix, "/([a-z0-9-]+)(___)*([a-z0-9-]+)*$/"));
 
         var s = e.attributes.length;
         var a = {};
