@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex flex-column flex-root" id="kt_app_root">
         <!--begin::Page bg image-->
-            <style>body { background-image: url("{{ asset(theme()->getMediaUrlPath() . 'auth/bg4.jpg') }}"); } [data-bs-theme="dark"] body { background-image: url("{{ asset(theme()->getMediaUrlPath() . 'auth/bg4-dark') }}"); }</style>
+            <style nonce="cm1vaw==">body { background-image: url("{{ asset(theme()->getMediaUrlPath() . 'auth/bg4.jpg') }}"); } [data-bs-theme="dark"] body { background-image: url("{{ asset(theme()->getMediaUrlPath() . 'auth/bg4-dark') }}"); }</style>
             <!--end::Page bg image-->
         <!--begin::Authentication - Sign-in -->
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">

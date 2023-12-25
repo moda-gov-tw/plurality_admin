@@ -20,8 +20,8 @@ Route::group(['prefix' => 'user-management', 'middleware' => ['auth','role:admin
     | create user_management
     |--------------------------------------------------------------------------
     */
-    Route::get('new', [AdminController::class, 'create'])->middleware(['permission:create user_management'])->name('admin-user.create');
-    Route::post('store', [AdminController::class, 'store'])->middleware(['permission:create user_management'])->name('admin-user.store');
+    Route::get('new', [AdminController::class, 'create'])->name('admin-user.create');
+    Route::post('store', [AdminController::class, 'store'])->name('admin-user.store');
 
     /*
     |--------------------------------------------------------------------------
@@ -34,10 +34,10 @@ Route::group(['prefix' => 'user-management', 'middleware' => ['auth','role:admin
     Route::get('get-admin-users', [AdminDatatableController::class, 'adminUsers'])->name('datatable.get-admin-users');
     Route::get('get-admin-user/{id}', [AdminController::class, 'adminUser']);
     Route::post('get-admin-user-role', [AdminController::class, 'getUserRole'])->name('admin_user_role.get');
-    Route::post('delete-admin-user', [AdminController::class, 'destroy'])->middleware(['permission:read user_management|delete user_management']);
+    Route::post('delete-admin-user', [AdminController::class, 'destroy']);
 
     //角色列表
-    Route::get('roles', [RoleController::class, 'index'])->middleware(['permission:read role'])->name('role.roles');
+    Route::get('roles', [RoleController::class, 'index'])->name('role.roles');
 
     /*
     |--------------------------------------------------------------------------
@@ -50,9 +50,9 @@ Route::group(['prefix' => 'user-management', 'middleware' => ['auth','role:admin
 
     Route::post('update-admin-datatable-row', [AdminDatatableController::class, 'updateRow'])->name('datatable.update-admin-row');
 
-    Route::get('edit-permission/{id}', [RoleController::class, 'editPermission'])->middleware(['permission:update role'])->name('role.edit_permission');
+    Route::get('edit-permission/{id}', [RoleController::class, 'editPermission'])->name('role.edit_permission');
 
-    Route::post('update-permission', [RoleController::class, 'updatePermission'])->middleware(['permission:update role'])->name('role.update_permission');
+    Route::post('update-permission', [RoleController::class, 'updatePermission'])->name('role.update_permission');
 
     // Route::post('update', [MemberController::class, 'update'])->middleware(['permission:update user_management'])->name('member.update');
 
