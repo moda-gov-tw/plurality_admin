@@ -1,0 +1,121 @@
+FROM php:8.1-apache AS php-deps
+
+WORKDIR /app
+RUN apt update
+RUN apt install -y zlib1g-dev libzip-dev libpng-dev libxml2-dev
+RUN docker-php-ext-configure gd --enable-gd
+RUN docker-php-ext-install gd xml zip
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY . .
+
+RUN composer install
+
+
+FROM node:20 AS node-deps
+
+WORKDIR /app
+RUN mkdir public
+COPY package.json webpack.mix.js .
+COPY resources/assets/ resources/assets/
+
+RUN npm install
+
+COPY .env .env
+
+# ignore error
+RUN npm run prod; exit 0
+
+
+FROM php:8.1-apache AS runner
+
+RUN apt-get update \
+    && apt-get install -y libzip-dev \
+        && docker-php-ext-install zip
+
+RUN apt-get install -y \
+    git \
+    zip \
+    curl \
+    sudo \
+    unzip \
+    libicu-dev \
+    libbz2-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libjpeg62-turbo-dev \
+    libwebp-dev \
+    libmcrypt-dev \
+    libreadline-dev \
+    libfreetype6-dev \
+    g++ \
+    python-is-python3 \
+    cron \
+    vim \
+    default-mysql-client
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install -j$(nproc) gd
+
+RUN docker-php-ext-configure zip
+RUN docker-php-ext-install \
+    bz2 \
+    intl \
+    iconv \
+    bcmath \
+    opcache \
+    calendar \
+    pdo_mysql \
+    zip
+
+
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN rm /etc/apache2/sites-enabled/*
+COPY apache/admin.plurality.moda.gov.tw.conf /etc/apache2/sites-enabled/admin.plurality.moda.gov.tw.conf
+
+RUN a2enmod rewrite headers ssl
+COPY apache/php.ini "$PHP_INI_DIR/php.ini"
+
+ARG uid=1000
+ENV APACHE_RUN_USER devuser
+ENV APACHE_RUN_GROUP devuser
+
+RUN useradd -G www-data,root -u $uid -d /home/devuser devuser
+RUN mkdir -p /home/devuser/.composer && \
+    chown -R devuser:devuser /home/devuser
+
+RUN service apache2 restart
+
+EXPOSE 80
+EXPOSE 443
+
+WORKDIR /var/www/html
+COPY . .
+RUN rm -r apache
+RUN rm .env.*
+
+COPY --from=php-deps --chown=devuser:devuser /app/vendor ./vendor
+COPY --from=node-deps /app/public/demo1/ /var/www/html/public/demo1/
+COPY --from=node-deps /app/mix-manifest.json /var/www/html/mix-manifest.json
+
+RUN chown -R devuser:devuser .
+RUN chmod 440 .env
+
+RUN php artisan key:generate
+
+RUN php artisan storage:link
+
+RUN php artisan cache:clear
+
+RUN php artisan config:cache
+
+
+RUN apt-get update \
+    &&  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
+    
+RUN TZ=Asia/Taipei \
+    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo $TZ > /etc/timezone \
+    && dpkg-reconfigure -f noninteractive tzdata 
+
+CMD ["apache2-foreground"]
