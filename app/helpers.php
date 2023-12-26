@@ -204,7 +204,7 @@ if (!function_exists('preloadCss')) {
      */
     function preloadCss($url)
     {
-        return '<link rel="preload" href="'.$url.'" as="style" onload="this.onload=null;this.rel=\'stylesheet\'" type="text/css"><noscript ><link rel="stylesheet" href="'.$url.'" ></noscript>';
+        return '<link integrity="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" sha256="8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" rel="preload" href="'.$url.'" as="style" onload="this.onload=null;this.rel=\'stylesheet\'" type="text/css"><noscript sha256="8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" integrity="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA="><link rel="stylesheet" href="'.$url.'" sha256="8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" integrity="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA="></noscript>';
     }
 }
 

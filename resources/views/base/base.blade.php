@@ -19,7 +19,7 @@
         {{-- begin::Page Vendor Stylesheets(used by this page) --}}
         @foreach (array_unique(theme()->getVendorFiles('css')) as $file)
             @if(util()->isExternalURL($file))
-                <link rel="stylesheet" href="{{ $file }}" />
+                <link rel="stylesheet" href="{{ $file }}" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" />
             @else
                 {!! preloadCss(getAsset($file)) !!}
             @endif
@@ -41,7 +41,7 @@
             @if (strpos($file, 'plugins') !== false)
                 {!! preloadCss(getAsset($file)) !!}
             @else
-                <link href="{{ getAsset($file) }}" rel="stylesheet" type="text/css" />
+                <link href="{{ getAsset($file) }}" rel="stylesheet" type="text/css" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" />
             @endif
         @endforeach
         {{-- end::Global Stylesheets Bundle --}}
@@ -65,7 +65,7 @@
 @if (theme()->hasOption('assets', 'js'))
     {{-- begin::Global Javascript Bundle(used by all pages) --}}
     @foreach (array_unique(theme()->getOption('assets', 'js')) as $file)
-        <script src="{{ getAsset($file) }}" ></script>
+        <script src="{{ getAsset($file) }}" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" ></script>
     @endforeach
     {{-- end::Global Javascript Bundle --}}
 @endif
@@ -74,9 +74,9 @@
     {{-- begin::Page Vendors Javascript(used by this page) --}}
     @foreach (array_unique(theme()->getVendorFiles('js')) as $file)
         @if(util()->isExternalURL($file))
-            <script src="{{ $file }}"></script>
+            <script src="{{ $file }}" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" ></script>
         @else
-            <script src="{{ getAsset($file) }}" ></script>
+            <script src="{{ getAsset($file) }}" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" ></script>
         @endif
     @endforeach
     {{-- end::Page Vendors Javascript --}}
@@ -85,7 +85,7 @@
 @if (theme()->hasOption('page', 'assets/custom/js'))
     {{-- begin::Page Custom Javascript(used by this page) --}}
     @foreach (array_unique(theme()->getOption('page', 'assets/custom/js')) as $file)
-        <script src="{{ getAsset($file) }}"></script>
+        <script src="{{ getAsset($file) }}" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" ></script>
     @endforeach
     {{-- end::Page Custom Javascript --}}
 @endif
