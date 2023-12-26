@@ -156,13 +156,11 @@ mix.webpackConfig({
 // Webpack.mix does not copy fonts, manually copy
 (glob.sync(`resources/assets/core/plugins/**/*.+(woff|woff2|eot|ttf|svg)`) || []).forEach(file => {
     var folder = file.match(/resources\/.*?\/core\/plugins\/(.*?)\/.*?/)[1];
-    // mix.copy(file, `public/${demo}/plugins/global/fonts/${folder}/${path.basename(file)}`);
-    mix.copy(file, `public/${demo}/plugins/fonts/${path.basename(file)}`);
+    mix.copy(file, `public/${demo}/plugins/global/fonts/${folder}/${path.basename(file)}`);
 });
 (glob.sync('node_modules/+(@fortawesome|socicon|line-awesome|bootstrap-icons)/**/*.+(woff|woff2|eot|ttf)') || []).forEach(file => {
     var folder = file.match(/node_modules\/(.*?)\//)[1];
-    // mix.copy(file, `public/${demo}/plugins/global/fonts/${folder}/${path.basename(file)}`);
-    mix.copy(file, `public/${demo}/plugins/fonts/${path.basename(file)}`);
+    mix.copy(file, `public/${demo}/plugins/global/fonts/${folder}/${path.basename(file)}`);
 });
 (glob.sync('node_modules/jstree/dist/themes/default/*.+(png|gif)') || []).forEach(file => {
     mix.copy(file, `public/${demo}/plugins/custom/jstree/${path.basename(file)}`);

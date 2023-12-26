@@ -204,7 +204,7 @@ if (!function_exists('preloadCss')) {
      */
     function preloadCss($url)
     {
-        return '<link rel="preload" href="'.$url.'" as="style" onload="this.onload=null;this.rel=\'stylesheet\'" type="text/css" nonce="cm1vaw=="><noscript nonce="cm1vaw=="><link rel="stylesheet" href="'.$url.'" nonce="cm1vaw=="></noscript>';
+        return '<link rel="preload" href="'.$url.'" as="style" onload="this.onload=null;this.rel=\'stylesheet\'" type="text/css"><noscript ><link rel="stylesheet" href="'.$url.'" ></noscript>';
     }
 }
 

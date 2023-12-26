@@ -16,7 +16,6 @@ return array(
                     'js/widgets.bundle.js',
                 ),
             ),
-            'vendors' => array('fullcalendar', 'amcharts', 'amcharts-maps'),
         ),
     ),
 

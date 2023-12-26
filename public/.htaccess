@@ -19,12 +19,3 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
-
-<IfModule mod_headers.c>
-Header set Content-Security-Policy " \
-    script-src  cdn.amcharts.com static.cloudflareinsights.com admin.plurality.moda.gov.tw 'nonce-cm1vaw==';  \
-    style-src 'self' fonts.googleapis.com admin.plurality.moda.gov.tw 'nonce-cm1vaw==' ; \
-    font-src fonts.googleapis.com fonts.gstatic.com data:; \
-    img-src 'self' data:; \
-"
-</IfModule>
