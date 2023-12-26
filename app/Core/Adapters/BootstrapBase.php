@@ -7,11 +7,29 @@ abstract class BootstrapBase
     public static function initBase()
     {
         theme()->addHtmlAttribute('body', 'id', 'kt_body');
-        
+        theme()->addHtmlAttribute('body', 'integrity', 'sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=');
         theme()->addHtmlAttribute('body', 'sha256', '8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg');
 
+        if (theme()->isDarkModeEnabled() && theme()->getCurrentMode() === 'dark') {
+            theme()->addHtmlClass('body', 'dark-mode');
+        }
 
-        
+        if (theme()->getOption('layout', 'main/body/background-image')) {
+            theme()->addHtmlAttribute('body', 'style', 'background-image: url('.asset(theme()->getMediaUrlPath().theme()->getOption('layout', 'main/body/background-image')).')');
+        }
+
+        if (theme()->getOption('layout', 'main/body/class')) {
+            theme()->addHtmlClass('body', theme()->getOption('layout', 'main/body/class'));
+        }
+
+        if (theme()->getOption('layout', 'main/body/attributes')) {
+            theme()->addHtmlAttributes('body', theme()->getOption('layout', 'main/body/attributes'));
+        }
+
+        if (theme()->getOption('layout', 'loader/display') === true) {
+            theme()->addHtmlClass('body', 'page-loading-enabled');
+            theme()->addHtmlClass('body', 'page-loading');
+        }
     }
 
     public static function run()
