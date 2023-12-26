@@ -7,9 +7,7 @@ abstract class BootstrapBase
     public static function initBase()
     {
         theme()->addHtmlAttribute('body', 'id', 'kt_body');
-        theme()->addHtmlAttribute('body', 'integrity', 'sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=');
-        theme()->addHtmlAttribute('body', 'sha256', '8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg');
-
+        
         if (theme()->isDarkModeEnabled() && theme()->getCurrentMode() === 'dark') {
             theme()->addHtmlClass('body', 'dark-mode');
         }

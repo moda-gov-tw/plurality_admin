@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="shortcut icon" href="{{ getAsset(theme()->getOption('assets', 'favicon')) }}"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    
     {{-- begin::Fonts --}}
     {{ theme()->includeFonts() }}
     {{-- end::Fonts --}}
@@ -19,7 +19,7 @@
         {{-- begin::Page Vendor Stylesheets(used by this page) --}}
         @foreach (array_unique(theme()->getVendorFiles('css')) as $file)
             @if(util()->isExternalURL($file))
-                <link rel="stylesheet" href="{{ $file }}" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" />
+                <link rel="stylesheet" href="{{ $file }}" nonce="{{ csp_nonce() }}" />
             @else
                 {!! preloadCss(getAsset($file)) !!}
             @endif
@@ -41,7 +41,7 @@
             @if (strpos($file, 'plugins') !== false)
                 {!! preloadCss(getAsset($file)) !!}
             @else
-                <link href="{{ getAsset($file) }}" rel="stylesheet" type="text/css" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" />
+                <link href="{{ getAsset($file) }}" rel="stylesheet" type="text/css" nonce="{{ csp_nonce() }}"/>
             @endif
         @endforeach
         {{-- end::Global Stylesheets Bundle --}}
@@ -65,7 +65,7 @@
 @if (theme()->hasOption('assets', 'js'))
     {{-- begin::Global Javascript Bundle(used by all pages) --}}
     @foreach (array_unique(theme()->getOption('assets', 'js')) as $file)
-        <script src="{{ getAsset($file) }}" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" ></script>
+        <script src="{{ getAsset($file) }}" nonce="{{ csp_nonce() }}"></script>
     @endforeach
     {{-- end::Global Javascript Bundle --}}
 @endif
@@ -74,9 +74,9 @@
     {{-- begin::Page Vendors Javascript(used by this page) --}}
     @foreach (array_unique(theme()->getVendorFiles('js')) as $file)
         @if(util()->isExternalURL($file))
-            <script src="{{ $file }}" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" ></script>
+            <script src="{{ $file }}" nonce="{{ csp_nonce() }}"></script>
         @else
-            <script src="{{ getAsset($file) }}" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" ></script>
+            <script src="{{ getAsset($file) }}" nonce="{{ csp_nonce() }}"></script>
         @endif
     @endforeach
     {{-- end::Page Vendors Javascript --}}
@@ -85,7 +85,7 @@
 @if (theme()->hasOption('page', 'assets/custom/js'))
     {{-- begin::Page Custom Javascript(used by this page) --}}
     @foreach (array_unique(theme()->getOption('page', 'assets/custom/js')) as $file)
-        <script src="{{ getAsset($file) }}" sha256="sha256-8x79V4hKje9JJjwY4mh5Z3OSc8e4CLNcMJm6Mg/y9TA=" ></script>
+        <script src="{{ getAsset($file) }}" nonce="{{ csp_nonce() }}"></script>
     @endforeach
     {{-- end::Page Custom Javascript --}}
 @endif

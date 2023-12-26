@@ -40,3 +40,11 @@ window.addEventListener("load", function() {
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 	window.KTComponents = module.exports = KTComponents;
 }
+
+
+const scriptTagWithNonce = document.getElementsByTagName('script')[0] || {};
+const bodyTag = document.getElementById('kt_body');
+const nonceForBodyTag = scriptTagWithNonce.nonce || '';
+bodyTag.setAttribute('nonce',nonceForBodyTag);
+
+$("[rel=preload]").attr('nonce',nonceForBodyTag);
