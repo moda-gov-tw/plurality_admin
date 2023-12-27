@@ -21,8 +21,11 @@ class MyCustomPolicy extends Basic
         ->addDirective(Directive::FONT, ['self', 'fonts.googleapis.com', 'fonts.gstatic.com'])
         ->addDirective(Directive::OBJECT, Keyword::NONE)
         ->addDirective(Directive::FORM_ACTION, Keyword::SELF)
-        ->addNonceForDirective('script-src-elem')
-        ->addNonceForDirective('style-src-elem');
+        ->addDirective('frame-src', Keyword::SELF)
+        ->addDirective('frame-ancestors', Keyword::SELF)
+        ->addDirective(Directive::MEDIA, Keyword::SELF)
+        ->addDirective('worker-src', Keyword::SELF)
+        ->addDirective('manifest-src', Keyword::SELF)
         ;
     }
 }

@@ -204,7 +204,7 @@ if (!function_exists('preloadCss')) {
      */
     function preloadCss($url)
     {
-        return '<link nonce="'.csp_nonce().'" rel="preload" href="'.$url.'" as="style" onload="this.onload=null;this.rel=\'stylesheet\'" type="text/css"><noscript ><link nonce="'.csp_nonce().'" rel="stylesheet" href="'.$url.'" ></noscript>';
+        return '<link nonce="'.csp_nonce().'" rel="preload" href="'.$url.'" as="style" onload="this.onload=null;this.rel=\'stylesheet\'" type="text/css">';
     }
 }
 

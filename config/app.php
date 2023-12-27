@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Spatie\Csp\CspServiceProvider::class,
         /*
          * Application Service Providers...
          */

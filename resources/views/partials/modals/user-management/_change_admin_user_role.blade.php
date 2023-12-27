@@ -1,5 +1,6 @@
 
                                                 <form id="update_user_role_form" class="form" method="POST" action="{{ route('admin_user_role.update')}}" >
+                                                    @csrf
                                                     <input style="display:none;" id="update_user_role" name="user_id" value="{{$user->id}}"/>
                                                 
                                                         <!--begin::Modal header-->
