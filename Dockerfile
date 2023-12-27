@@ -34,10 +34,10 @@ RUN docker-php-ext-install -j$(nproc) gd
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 #apache ssl cert & config
-#COPY apache/ssl/ca.crt /etc/ssl/certs/ca.crt
-#COPY apache/ssl/ca.key /etc/ssl/private/ca.key
+COPY apache/ssl/server.pem /etc/ssl/certs/server.pem
+COPY apache/ssl/key.pem /etc/ssl/private/key.pem
 COPY apache/admin.plurality.moda.gov.tw.conf /etc/apache2/sites-enabled/admin.plurality.moda.gov.tw.conf
-#COPY apache/admin.plurality.moda.gov.tw.ssl.conf /etc/apache2/sites-enabled/admin.plurality.moda.gov.tw.ssl.conf
+COPY apache/admin.plurality.moda.gov.tw.ssl.conf /etc/apache2/sites-enabled/admin.plurality.moda.gov.tw.ssl.conf
 
 # 3. mod_rewrite for URL rewrite and mod_headers for .htaccess extra headers like Access-Control-Allow-Origin-
 RUN a2enmod rewrite headers ssl

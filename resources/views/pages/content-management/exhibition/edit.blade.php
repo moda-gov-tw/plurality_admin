@@ -3,7 +3,7 @@
     <!--begin: exhibition Form-->
     <form action="{{ route('content-management.modify-exhibition') }}" method="POST" role="form" id="exhibition_form">
     @csrf
-    <input name="exhibition_id" value="{{$exhibition['id']}}" style="display:none;"/>
+    <input name="exhibition_id" value="{{$exhibition['id']}}" class="hidden-input"/>
     <div class="card-body">
             <div class="row mb-10">
                 <div class="col-xl-4">

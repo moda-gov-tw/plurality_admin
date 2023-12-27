@@ -3,7 +3,7 @@
     <!--begin: News Form-->
     <form action="{{ route('content-management.modify-news') }}" method="POST" role="form" id="news_form">
     @csrf
-    <input name="news_id" value="{{$news['id']}}" style="display:none;"/>
+    <input name="news_id" value="{{$news['id']}}" class="hidden-input"/>
     <div class="card-body">
             <div class="row mb-10">
                 <div class="col-xl-2">
@@ -91,18 +91,3 @@
 </div>
 
 </x-base-layout>
-<script type="text/javascript">
-    ClassicEditor
-            .create(document.querySelector('#news_content'),{
-                ckfinder: {
-                    // Upload the images to the server using the CKFinder QuickUpload command.
-                    uploadUrl: "{{route('content-management.upload-image').'?_token='.csrf_token()}}",
-                },
-            })
-            .then(editor => {
-                // console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-</script>

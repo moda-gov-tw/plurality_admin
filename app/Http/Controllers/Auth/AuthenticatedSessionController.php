@@ -5,15 +5,54 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use App\Models\AdminUser as User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthenticatedSessionController extends Controller
 {
+
+    public function AADCallback(Request $request){
+        // echo "<pre>";print_r($request->all());echo "</pre>";exit;
+
+        $user = Socialite::driver('azure')->user();
+        // echo "<pre>";print_r($user);echo "</pre>";
+        
+        $email = explode("#EXT#@", $user->email);
+
+        $user_email = str_replace('_', '@', $email[0]);
+        
+        $admin_user = User::where('email',$user_email)->first();
+
+        if(!is_null($admin_user)){
+            $admin_user->update(['name'=>$user->name, 'token'=>$user->token]);
+        }
+        else{
+            $admin_user = User::create([
+                'name'              => $user->name,
+                'email'             => $user_email,
+                'email_verified_at' => now(),
+                'token'=>$user->token
+            ]);
+
+            $admin_user->syncRoles('editor');
+        }
+
+        
+
+        Auth::login($admin_user);
+
+        $request->session()->regenerate();
+
+        
+        
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
     /**
      * Display the login view.
      *
@@ -21,7 +60,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        return Socialite::driver('azure')->redirect();
+        // return view('auth.login');
     }
 
     /**
@@ -91,12 +131,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::guard('web')->logout();
+        
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        $request->session()->flush();
+        
+        $azureLogoutUrl = Socialite::driver('azure')->getLogoutUrl(route('login'));
+
+        Auth::guard('web')->logout();
+
+        return redirect($azureLogoutUrl);
+
+        // return redirect('/');
     }
 }

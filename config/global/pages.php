@@ -43,6 +43,7 @@ return array(
                     'js' => array(
                         'js/custom/content-management/news/date-picker.js',
                         'js/custom/content-management/news/submit-form.js',
+                        'js/custom/content-management/news/ckeditor.js',
                     ),
                 ),
                 'vendors' => array('ckeditor-classic'),
@@ -56,6 +57,7 @@ return array(
                     'js' => array(
                         'js/custom/content-management/news/date-picker.js',
                         'js/custom/content-management/news/submit-form.js',
+                        'js/custom/content-management/news/ckeditor.js',
                     ),
                 ),
                 'vendors' => array('ckeditor-classic'),
@@ -70,6 +72,7 @@ return array(
                     'js' => array(
                         'js/custom/content-management/exhibition/list-datatable.js',
                         'js/custom/content-management/exhibition/delete.js',
+
                     ),
                 ),
                 'vendors' => array('datatables'),
@@ -133,18 +136,18 @@ return array(
             ),
         ),
     ),
-    'account' => array(
-        'settings' => array(
-            'title'       => 'account-settings',
-            'assets'      => array(
-                'custom' => array(
-                    'js' => array(
-                        'js/custom/account/settings/change-password.js',
-                    ),
-                ),
-            ),
-        ),
-    ),
+    // 'account' => array(
+    //     'settings' => array(
+    //         'title'       => 'account-settings',
+    //         'assets'      => array(
+    //             'custom' => array(
+    //                 'js' => array(
+    //                     'js/custom/account/settings/change-password.js',
+    //                 ),
+    //             ),
+    //         ),
+    //     ),
+    // ),
     
     'login'           => array(
         'title'  => 'Login',

@@ -146,6 +146,7 @@ if (args.indexOf('rtl') !== -1) {
 }
 
 mix.webpackConfig({
+    devtool: false,
     plugins: plugins,
     ignoreWarnings: [{
         module: /esri-leaflet/,

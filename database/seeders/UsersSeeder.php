@@ -17,28 +17,18 @@ class UsersSeeder extends Seeder
      */
     public function run(Generator $faker)
     {
-        $demoUser = AdminUser::create([
-            'name'              => '測試用1',
-            'email'             => 'demo@demo.com',
-            'password'          => Hash::make('demo'),
+        
+
+        $demoUser1 = AdminUser::create([
+            'name'              => '彼峰管理者',
+            'email'             => 'ryanhu1208@gmail.com',
             'email_verified_at' => now(),
-            'api_token'         => Hash::make('demo@demo'),
+            'token'         => Hash::make('ryanhu1208@gmail.com'),
         ]);
 
-        $demoUser->syncRoles('admin');
-        $this->addDummyInfo($faker, $demoUser);
+        $demoUser1->syncRoles('admin');
 
-        $demoUser2 = AdminUser::create([
-            'name'              => '測試用2',
-            'email'             => 'admin@demo.com',
-            'password'          => Hash::make('demo'),
-            'email_verified_at' => now(),
-            'api_token'         => Hash::make('admin@demo'),
-        ]);
-
-        $demoUser2->syncRoles('editor');
-
-        $this->addDummyInfo($faker, $demoUser2);
+        $this->addDummyInfo($faker, $demoUser1);
 
         // AdminUser::factory(100)->create()->each(function (AdminUser $user) use ($faker) {
         //     $this->addDummyInfo($faker, $user);

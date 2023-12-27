@@ -86,18 +86,3 @@
 </div>
 
 </x-base-layout>
-<script type="text/javascript">
-    ClassicEditor
-            .create(document.querySelector('#news_content'),{
-                ckfinder: {
-                    // Upload the images to the server using the CKFinder QuickUpload command.
-                    uploadUrl: "{{route('content-management.upload-image').'?_token='.csrf_token()}}",
-                },
-            })
-            .then(editor => {
-                // console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-</script>

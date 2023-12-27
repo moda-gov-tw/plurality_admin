@@ -31,11 +31,12 @@ class AdminUser extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name',
         'email',
-        'password',
-        'roles_name',
+        'name',
+        'token',
         'api_token',
+        'email_verified_at',
+        'roles_name'
     ];
 
     /**
@@ -44,7 +45,6 @@ class AdminUser extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
