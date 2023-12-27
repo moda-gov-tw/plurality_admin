@@ -43,8 +43,10 @@ return array(
                     'js' => array(
                         'js/custom/content-management/news/date-picker.js',
                         'js/custom/content-management/news/submit-form.js',
+                        'js/custom/content-management/news/ckeditor.js',
                     ),
                 ),
+
                 'vendors' => array('ckeditor-classic'),
             ),
         ),
@@ -56,8 +58,10 @@ return array(
                     'js' => array(
                         'js/custom/content-management/news/date-picker.js',
                         'js/custom/content-management/news/submit-form.js',
+                        'js/custom/content-management/news/ckeditor.js',
                     ),
                 ),
+                
                 'vendors' => array('ckeditor-classic'),
             ),
         ),
@@ -85,7 +89,6 @@ return array(
                         'js/custom/content-management/exhibition/submit-form.js',
                     ),
                 ),
-                'vendors' => array('ckeditor-classic'),
             ),
         ),
         //編輯活動資訊
@@ -98,7 +101,6 @@ return array(
                         'js/custom/content-management/exhibition/submit-form.js',
                     ),
                 ),
-                'vendors' => array('ckeditor-classic'),
             ),
         ),
     ),

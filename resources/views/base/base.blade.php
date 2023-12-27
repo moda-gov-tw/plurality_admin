@@ -15,6 +15,13 @@
     {{ theme()->includeFonts() }}
     {{-- end::Fonts --}}
 
+    @if (request()->is('login'))
+      <link href="{{ getAsset('css/style.bg.css') }}" rel="stylesheet" type="text/css" nonce="{{ csp_nonce() }}"/>
+    @endif
+
+    
+    
+
     @if (theme()->hasVendorFiles('css'))
         {{-- begin::Page Vendor Stylesheets(used by this page) --}}
         @foreach (array_unique(theme()->getVendorFiles('css')) as $file)
@@ -57,7 +64,7 @@
 {{-- end::Head --}}
 
 {{-- begin::Body --}}
-<body {!! theme()->printHtmlAttributes('body') !!} {!! theme()->printHtmlClasses('body') !!} {!! theme()->printCssVariables('body') !!} data-kt-name="metronic" data-kt-app-sidebar-minimize="off" >
+<body {!! theme()->printHtmlAttributes('body') !!} {!! theme()->printHtmlClasses('body') !!}  data-kt-name="metronic" data-kt-app-sidebar-minimize="off" >
 
 @yield('content')
 

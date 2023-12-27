@@ -1,11 +1,11 @@
 <x-base-layout>
 @if (session('role_update_message') === 'role.update.success')
 
-    <script type="text/javascript">alert("{{ __('role.role_update_success') }}");</script>
+    <script nonce="{{ csp_nonce() }} type="text/javascript">alert("{{ __('role.role_update_success') }}");</script>
 
     @elseif(session('role_update_message') === 'role.update.failed')
 
-    <script type="text/javascript">alert("{{ __('role.role_update_failed') }}");</script>
+    <script nonce="{{ csp_nonce() }} type="text/javascript">alert("{{ __('role.role_update_failed') }}");</script>
 
     @endif
 <!--begin::Card-->
@@ -22,8 +22,8 @@
     <div class="card-body">
         <!--begin::Table-->
         <form id="reload_datatable_form" class="form" method="POST" action="{{ route('datatable.update-admin-row') }}" >
-            <input style="display:none" id="update_row_id" name="row_id" value=""/>
-            <input style="display:none" id="update_row_user_id" name="user_id" value=""/>
+            <input class="hidden-input"id="update_row_id" name="row_id" value=""/>
+            <input class="hidden-input"id="update_row_user_id" name="user_id" value=""/>
         </form>
         <!-- <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users"> -->
         <table class="table table-head-custom" id="roles_table">

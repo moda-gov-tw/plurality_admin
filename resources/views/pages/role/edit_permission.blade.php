@@ -8,7 +8,7 @@
                                             </div>
                                             <!--begin::Form-->
                                             <form id="update_permissions_form" class="form" method="POST" action="{{ route('role.update_permission',) }}" >
-                                            <input name="role_id" value="{{$role->id}}" style="display:none;" />
+                                            <input name="role_id" value="{{$role->id}}" class="hidden-input" />
                                             @csrf
                                                 <div class="card-body">
                                                     @foreach($allowed_permissions as $key=>$allowed_permission)

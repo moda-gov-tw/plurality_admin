@@ -1,7 +1,7 @@
 
                                                 <form id="update_user_role_form" class="form" method="POST" action="{{ route('admin_user_role.update')}}" >
                                                     @csrf
-                                                    <input style="display:none;" id="update_user_role" name="user_id" value="{{$user->id}}"/>
+                                                    <input class="hidden-input" id="update_user_role" name="user_id" value="{{$user->id}}"/>
                                                 
                                                         <!--begin::Modal header-->
                                                         <div class="modal-header" id="kt_modal_add_user_header">
@@ -9,7 +9,7 @@
                                                             <h2 class="fw-bolder">{{trans('user-management.change_user_role')}}</h2>
                                                             <!--end::Modal title-->
                                                             <!--begin::Close-->
-                                                            <div class="btn btn-icon btn-sm btn-active-icon-primary" data-label="close" data-dismiss="modal">
+                                                            <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-label="close" data-bs-dismiss="modal">
                                                                 <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
                                                                 <span class="svg-icon svg-icon-1">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

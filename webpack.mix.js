@@ -49,6 +49,7 @@ mix.sass(`resources/assets/core/plugins/plugins.scss`, `public/${demo}/plugins/g
 mix.sass(`resources/assets/${demo}/sass/plugins.scss`, `public/${demo}/plugins/global/plugins-custom.bundle.css`);
 
 // Build Metronic css/js
+mix.sass(`resources/assets/${demo}/sass/style.bg.scss`, `public/${demo}/css/style.bg.css`);
 mix.sass(`resources/assets/${demo}/sass/style.scss`, `public/${demo}/css/style.bundle.css`, {sassOptions: {includePaths: ['node_modules']}})
     // .options({processCssUrls: false})
     .scripts(require(`./resources/assets/${demo}/js/scripts.js`), `public/${demo}/js/scripts.bundle.js`);
@@ -146,6 +147,7 @@ if (args.indexOf('rtl') !== -1) {
 }
 
 mix.webpackConfig({
+    devtool: false,
     plugins: plugins,
     ignoreWarnings: [{
         module: /esri-leaflet/,

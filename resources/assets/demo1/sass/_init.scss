@@ -1,7 +1,9 @@
 //
 // Main init file of global bootstrap and theme functions, mixins, variables and config
 //
-
+.hidden-input{
+	display: none;
+}
 
 // Custom functions & mixins
 @import "../../core/sass/base/functions";
