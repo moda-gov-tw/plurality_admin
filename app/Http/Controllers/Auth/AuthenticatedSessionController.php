@@ -131,8 +131,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        
-
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
@@ -143,8 +141,8 @@ class AuthenticatedSessionController extends Controller
 
         Auth::guard('web')->logout();
 
-        return redirect($azureLogoutUrl);
+        // echo $azureLogoutUrl;exit;
 
-        // return redirect('/');
+        return redirect($azureLogoutUrl);
     }
 }

@@ -31,7 +31,7 @@
 	
 	<!--begin::Menu item-->
 	<div class="menu-item px-5">
-		<a class="button-ajax menu-link px-5" href="#" data-action="{{ route('logout') }}" data-method="post" data-csrf="{{ csrf_token() }}" data-reload="true">
+		<a class="px-5" href="{{ route('logout') }}" >
             {{ __('auth.sign-out') }}
         </a>
 	</div>
