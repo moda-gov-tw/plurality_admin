@@ -16,3 +16,4 @@
 
 8. 重置、建立資料庫tables 及測試用登入資料: `php artisan migrate:reset --force && php artisan migrate --force && php artisan db:seed --force`
 
+9. .env 內需加上azure ad 相關設定值 AZURE_CLIENT_ID / AZURE_CLIENT_SECRET / AZURE_TENANT_ID / AZURE_REDIRECT_URI
