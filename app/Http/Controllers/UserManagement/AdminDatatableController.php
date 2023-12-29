@@ -103,7 +103,6 @@ class AdminDatatableController extends Controller
                 ->where(function ($all_admin_user) use ($search_value) {
                     $all_admin_user->where(Auth::user()->getTable().'.name', 'LIKE', '%'.$search_value.'%')
                     ->orwhere(Auth::user()->getTable().'.email', 'LIKE', '%'.$search_value.'%')
-                    ->orwhere(Auth::user()->getTable().'.last_login_at', 'LIKE', '%'.$search_value.'%')
                     ->orwhere(Auth::user()->getTable().'.created_at', 'LIKE', '%'.$search_value.'%');
                 })
                 ->get();
