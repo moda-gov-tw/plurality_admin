@@ -1,0 +1,1 @@
+<div class="d-flex flex-column">{{$data}}</div>

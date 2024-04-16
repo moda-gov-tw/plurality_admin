@@ -1,0 +1,64 @@
+# For more information: https://laravel.com/docs/sail
+version: '3'
+services:
+    admin.plurality.moda.gov.tw:
+        build:
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        image: sail-8.2/app
+        ports:
+            - '${APP_PORT:-80}:80'
+            - '${APP_PORT:-443}:443'
+        environment:
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - sail
+        depends_on:
+            - mysql
+            - phpmyadmin.test
+    mysql:
+        image: 'mysql/mysql-server:8.0'
+        container_name: db
+        ports:
+            - '${FORWARD_DB_PORT:-3306}:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        volumes:
+            - "./sql/create-database.sh:/docker-entrypoint-initdb.d/create-database.sh"
+        networks:
+            - sail
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
+            retries: 3
+            timeout: 5s
+    phpmyadmin.test:
+        image: 'phpmyadmin/phpmyadmin:latest'
+        ports:
+          - 8080:80
+        environment:
+          PMA_HOST: mysql
+          MYSQL_USER: '${DB_USERNAME}'
+          MYSQL_PASSWORD: '${DB_PASSWORD}'
+          PMA_ARBITRARY: 1
+          MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+        links:
+          - "mysql:db"
+        depends_on:
+          - mysql
+        networks:
+          - sail
+networks:
+    sail:
+        driver: bridge
+volumes:
+    sailmysql:
+        driver: local
+    

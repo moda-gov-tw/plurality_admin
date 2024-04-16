@@ -1,0 +1,1 @@
+{{ (isset($user->getRoleNames()[0])?(($locale=='zh_TW')?$user['chinese_name']:$user['roles_name']):trans('table.not_assigned_role') ) }}
